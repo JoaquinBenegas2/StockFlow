@@ -31,14 +31,6 @@ CREATE TABLE categorias (
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
 
-CREATE TABLE modelos (
-    id_modelo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	descripcion VARCHAR(64),
-    id_usuario INT NOT NULL,
-    
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
-);
-
 CREATE TABLE marcas (
     id_marca INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	descripcion VARCHAR(64),
@@ -86,7 +78,7 @@ CREATE TABLE productos (
     id_imagen_producto INT,
     nombre VARCHAR(96),
     id_categoria INT,
-    id_modelo INT,
+    modelo VARCHAR(96),
     id_marca INT,
     id_color INT,
     id_pais INT,
@@ -105,7 +97,6 @@ CREATE TABLE productos (
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
 	FOREIGN KEY (id_imagen_producto) REFERENCES imagenes_productos(id_imagen_producto),
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
-	FOREIGN KEY (id_modelo) REFERENCES modelos(id_modelo),
 	FOREIGN KEY (id_marca) REFERENCES marcas(id_marca),
 	FOREIGN KEY (id_color) REFERENCES colores(id_color),
 	FOREIGN KEY (id_pais) REFERENCES paises(id_pais),
@@ -208,23 +199,23 @@ CREATE TABLE detalles_facturas(
 -- DDL --
 INSERT INTO unidades_peso (descripcion)
 VALUES 
-("mg"),
-("cg"),
-("dg"),
-("g"),
-("dag"),
-("hg"),
-("kg");
+("Miligramos"),
+("Centigramos"),
+("Decigramos"),
+("Gramos"),
+("Decagramos"),
+("Hectogramos"),
+("Kilogramos");
 
 INSERT INTO unidades_longitud (descripcion)
 VALUES 
-("mm"),
-("cm"),
-("dm"),
-("m"),
-("dam"),
-("hm"),
-("km");
+("Milimetros"),
+("Centimetros"),
+("Decimetros"),
+("Metros"),
+("Decametros"),
+("Hectometros"),
+("Kilometros");
 
 INSERT INTO paises 
 VALUES
