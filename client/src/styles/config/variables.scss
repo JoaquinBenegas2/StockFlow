@@ -1,0 +1,22 @@
+// VARIABLES
+
+// Font Family
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');
+
+:root {
+    // Fonts
+    --title-font: 'Quicksand', sans-serif;
+    --primary-font: 'Ubuntu', sans-serif;
+
+    // Colors
+    --primary: #FF3355;
+    --primary-25: #FF335525;
+    --dark-15: #1E252E;
+    --dark-12: #181E25;
+    --dark-10: #14181F;
+
+    // Text Colors
+    --text-dark: #17181A;
+    --text-light: #CFD9E6;
+
+}

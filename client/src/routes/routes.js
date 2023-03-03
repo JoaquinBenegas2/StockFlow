@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Views
-import Dashboard from "../views/Dashboard"
+import Dashboard from "../views/Dashboard/Dashboard"
 
 export default function RoutesComponent() {
   return(

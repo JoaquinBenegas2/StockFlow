@@ -28,7 +28,7 @@ try {
 
 
 // Routes:
-app.use("/productos", productosRoutes);
+app.use("/api/productos", productosRoutes);
 //----------------------------------------------------------
 
 
