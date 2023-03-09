@@ -28,7 +28,7 @@ CREATE TABLE categorias (
 	descripcion VARCHAR(64),
     id_usuario INT NOT NULL,
     
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
 CREATE TABLE marcas (
@@ -36,7 +36,7 @@ CREATE TABLE marcas (
 	descripcion VARCHAR(64),
     id_usuario INT NOT NULL,
     
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
 CREATE TABLE colores (
@@ -44,7 +44,7 @@ CREATE TABLE colores (
 	descripcion VARCHAR(64),
     id_usuario INT NOT NULL,
     
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
 CREATE TABLE paises (
@@ -69,7 +69,7 @@ CREATE TABLE imagenes_productos (
 	nombre VARCHAR(128),
     id_usuario INT NOT NULL,
     
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
 -- PRODUCTOS -- 
@@ -94,14 +94,14 @@ CREATE TABLE productos (
     precio_actual DECIMAL(16, 2),
     id_usuario INT NOT NULL,
     
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
-	FOREIGN KEY (id_imagen_producto) REFERENCES imagenes_productos(id_imagen_producto),
-    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
-	FOREIGN KEY (id_marca) REFERENCES marcas(id_marca),
-	FOREIGN KEY (id_color) REFERENCES colores(id_color),
-	FOREIGN KEY (id_pais) REFERENCES paises(id_pais),
-	FOREIGN KEY (id_unidad_peso) REFERENCES unidades_peso(id_unidad_peso),
-	FOREIGN KEY (id_unidad_longitud) REFERENCES unidades_longitud(id_unidad_longitud)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+	FOREIGN KEY (id_imagen_producto) REFERENCES imagenes_productos(id_imagen_producto) ON DELETE SET NULL,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria) ON DELETE SET NULL,
+	FOREIGN KEY (id_marca) REFERENCES marcas(id_marca) ON DELETE SET NULL,
+	FOREIGN KEY (id_color) REFERENCES colores(id_color) ON DELETE SET NULL,
+	FOREIGN KEY (id_pais) REFERENCES paises(id_pais) ON DELETE SET NULL,
+	FOREIGN KEY (id_unidad_peso) REFERENCES unidades_peso(id_unidad_peso) ON DELETE SET NULL,
+	FOREIGN KEY (id_unidad_longitud) REFERENCES unidades_longitud(id_unidad_longitud) ON DELETE SET NULL
 );
 
 
@@ -126,7 +126,7 @@ CREATE TABLE proveedores (
     provincia VARCHAR(96),
     id_usuario INT NOT NULL,
     
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
 CREATE TABLE clientes (
@@ -143,7 +143,7 @@ CREATE TABLE clientes (
     provincia VARCHAR(96),
     id_usuario INT NOT NULL,
     
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
 -- CONTACTOS --
@@ -159,9 +159,9 @@ CREATE TABLE contactos (
     id_tipo_contacto INT NOT NULL,
     id_usuario INT NOT NULL,
     
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
-    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor),
-    FOREIGN KEY (id_tipo_contacto) REFERENCES tipos_contacto(id_tipo_contacto)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor) ON DELETE CASCADE,
+    FOREIGN KEY (id_tipo_contacto) REFERENCES tipos_contacto(id_tipo_contacto) ON DELETE SET NULL
 );
 
 -- FACTURAS --
@@ -176,11 +176,11 @@ CREATE TABLE  facturas(
     id_metodo_pago INT,
     id_usuario INT NOT NULL,
     
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
-    FOREIGN KEY (id_tipo_transaccion) REFERENCES tipos_transaccion(id_tipo_transaccion),
-    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor),
-    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
-    FOREIGN KEY (id_metodo_pago) REFERENCES metodos_pago(id_metodo_pago)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_tipo_transaccion) REFERENCES tipos_transaccion(id_tipo_transaccion) ON DELETE SET NULL,
+    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor) ON DELETE SET NULL,
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente) ON DELETE SET NULL,
+    FOREIGN KEY (id_metodo_pago) REFERENCES metodos_pago(id_metodo_pago) ON DELETE SET NULL
 );
 
 CREATE TABLE detalles_facturas(
@@ -191,9 +191,9 @@ CREATE TABLE detalles_facturas(
     cantidad INT,
 	id_usuario INT NOT NULL,
     
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
-    FOREIGN KEY (nro_factura) REFERENCES facturas(nro_factura),
-    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (nro_factura) REFERENCES facturas(nro_factura) ON DELETE CASCADE,
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto) ON DELETE SET NULL
 );
 
 -- DDL --

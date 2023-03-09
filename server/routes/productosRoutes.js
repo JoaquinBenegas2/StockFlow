@@ -9,7 +9,7 @@ import
   updateProducto,
   deleteProducto 
 }
-from "../controllers/ProductoController.js";
+from "../controllers/ProductController.js";
 
 // Productos
 router.get("/", getAllProductos);

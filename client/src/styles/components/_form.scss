@@ -1,0 +1,33 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    .form-item {
+        display: flex;
+        flex-direction: column;
+        gap: .8rem;
+
+        .form-label-container {
+            display: flex;
+            justify-content: space-between;
+            gap: .8rem;
+
+            .form-label {
+                transition: color .4s ease-in-out;
+            }
+
+            .form-error {
+                font-size: 1.4rem;
+            }
+        }
+
+        .form-input {
+            border: none;
+            outline: none;
+            padding: 1.2rem 1.6rem;   
+            border-radius: .4rem;
+            transition: box-shadow .4s ease-in-out;
+        }
+    } 
+}

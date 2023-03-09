@@ -3,9 +3,6 @@ import { urlencoded } from "express";
 import cors from "cors"
 import database from "./database/database.js"
 
-// Import Routers
-import productosRoutes from "./routes/productosRoutes.js"
-
 
 const app = express();
 
@@ -27,8 +24,13 @@ try {
 //----------------------------------------------------------
 
 
+// Import Routers:
+import productosRoutes from "./routes/productosRoutes.js"
+import usuariosRoutes from "./routes/usuariosRoutes.js"
+
 // Routes:
 app.use("/api/productos", productosRoutes);
+app.use("/api/auth", usuariosRoutes);
 //----------------------------------------------------------
 
 
